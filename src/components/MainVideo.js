@@ -14,7 +14,6 @@ const MainVideo = () => {
     const data = await fetch(youtubeApi);
     const jsonData = await data.json();
     setVideos(jsonData.items);
-    console.log(jsonData.items);
   };
 
   return (
