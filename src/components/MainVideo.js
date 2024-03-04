@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import { youtubeApi } from '../utils/contants';
-import Video from "./Video"
+import React, { useEffect, useState } from "react";
+import { youtubeApi } from "../utils/contants";
+import Video from "./Video";
+import { Link } from "react-router-dom";
 
 const MainVideo = () => {
+  let [videos, setVideos] = useState([]);
 
-    let [videos,setVideos] = useState([]);
+  useEffect(() => {
+    fetchVideos();
+  }, []);
 
-
-    useEffect(()=>{
-        fetchVideos();
-    },[])
-
-    const fetchVideos = async ()=>{
-        const data = await fetch(youtubeApi)
-        const jsonData = await data.json();
-        setVideos(jsonData.items);
-        console.log(jsonData.items)
-    }
+  const fetchVideos = async () => {
+    const data = await fetch(youtubeApi);
+    const jsonData = await data.json();
+    setVideos(jsonData.items);
+    console.log(jsonData.items);
+  };
 
   return (
-    <div className='flex flex-wrap  justify-center'>
-        {
-            videos.map((video)=><Video key={video.id} data={video}/>)
-        }
+    <div className="flex flex-wrap  justify-center">
+      {videos.map((video) => (
+        <Link to={"/watch?v="+video.id}>
+          <Video key={video.id} data={video} />
+        </Link>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default MainVideo
+export default MainVideo;
