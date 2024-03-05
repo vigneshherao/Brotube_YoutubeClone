@@ -15,7 +15,7 @@ const Watch = () => {
   },[])
 
   return (
-    <div className='flex pt-2 px-5'>
+    <div className='flex pt-2 px-5 mt-20'>
       <div className='flex'>
       <div className='w-[100%] p-2 m-5'>
       <iframe className='rounded-md shadow-lg w-[100%]'  height="540"  src={"https://www.youtube.com/embed/"+searchParams.get("v")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>

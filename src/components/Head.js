@@ -5,8 +5,8 @@ import { searchApi } from "../utils/contants";
 
 const Head = () => {
   const [search, setSearch] = useState("");
-  const [suggestion, setSuggestion] = useState([]);
-  let [closeSearch, setCloseSearch] = useState(false);
+  const [suggestions, setShowSuggestions] = useState([]);
+  const [closeSearch, setCloseSearch] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Head = () => {
   const suggestData = async () => {
     const data = await fetch(searchApi + search);
     const jsonData = await data.json();
-    setSuggestion(jsonData[1]);
+    setShowSuggestions(jsonData[1]);
   };
 
   const toggleMenuHandler = () => {
@@ -30,8 +30,8 @@ const Head = () => {
   };
 
   return (
-    <div className="grid grid-flow-col border py-3 shadow-md px-8">
-      <div className="flex col-span-5 items-center">
+    <div className="fixed bg-white w-full grid grid-flow-col p-4 border-b border-gray-200">
+      <div className="col-span-2 md:col-span-1 flex items-center justify-start">
         <img
           className="h-5 cursor-pointer"
           onClick={() => {
@@ -46,41 +46,53 @@ const Head = () => {
           alt="youtubelogo"
         ></img>
       </div>
-      <div className="col-span-8 ">
-        <input
-          className="w-1/2 px-3 border border-gray-300 py-1 rounded-l-2xl"
-          type="text"
-          placeholder="Search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          onFocus={()=>{
-            setCloseSearch(true);
-          }}
-          onBlur={()=>{
-            setCloseSearch(false);
-          }}
-        
-        
-        ></input>
-        <button className="border border-gray-300 py-1 px-4 rounded-r-2xl bg-gray-50">
-          🔍
-        </button>
-        {closeSearch && <div className="bg-gray-100 w-[450px]">
-          {suggestion.map((data) => {
-            return (
-              <ul>
-                <li className="border border-b-0 p-1">{"🔍 " + data}</li>
-              </ul>
-            );
-          })}
-        </div>}
+      <div className="col-span-10 md:col-span-9 flex justify-end items-center md:block">
+        <div className="sm:flex md:hidden sm:justify-center sm:items-center">
+          <img className="rounded-full p-2" src="" alt="search" />
+        </div>
+        <div className="hidden md:flex justify-center items-center">
+          <div className="">
+            <div className="flex justify-center items-center relative">
+              <input
+                onChange={(e) => setSearch(e.target.value)}
+                onFocus={() => setCloseSearch(true)}
+                onBlur={() => setCloseSearch(false)}
+                value={search}
+                className="w-[600px] rounded-l-full p-2 px-6 border border-gray-200"
+                type="text"
+              />
+              <button className="rounded-r-full p-2 bg-gray-100 px-4 border border-gray-200">
+                🔍
+              </button>
+            </div>
+            {closeSearch && suggestions.length > 0 && (
+              <div>
+                <div className="fixed bg-white py-2 px-4 border border-gray-300 rounded-lg w-[600px] z-[9999]">
+                  <ul className="">
+                    {suggestions.map((suggestion) => (
+                      <li
+                        key={suggestion}
+                        className="hover:bg-gray-100 py-1 border-b border-gray-50 cursor-pointer flex"
+                      >
+                        {suggestion}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-      <div className="flex col-span-2 items-center">
-        <img
-          className="h-7 m-auto cursor-pointer"
-          src="https://cdn1.iconfinder.com/data/icons/heroicons-solid/20/user-circle-512.png"
-          alt="usericon"
-        ></img>
+      <div className="col-span-1 md:col-span-2 flex items-center justify-end">
+        <button className="border border-gray-200 rounded-full p-2 text-sm text-blue-600 flex justify-center items-center">
+          <img
+            className="h-7 m-auto cursor-pointer"
+            src="https://cdn1.iconfinder.com/data/icons/heroicons-solid/20/user-circle-512.png"
+            alt="usericon"
+          ></img>
+          <span className="px-2 hidden md:inline">Sign in</span>
+        </button>
       </div>
     </div>
   );
