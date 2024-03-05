@@ -22,7 +22,7 @@ const Watch = () => {
       <Details id={searchParams.get("v")}/>
       </div>
       </div>
-      <div className='p-2 mt-2'>
+      <div className='py-1 mt-2'>
         <RIghtSideVideo/>
       </div>
     </div>
