@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { searchApi } from "../utils/contants";
+import appStore from "../utils/appStore";
+import { cacheResult } from "../utils/searchSlice";
 
 const Head = () => {
   const [search, setSearch] = useState("");
@@ -9,9 +11,16 @@ const Head = () => {
   const [closeSearch, setCloseSearch] = useState(false);
   const dispatch = useDispatch();
 
+  const searchCache = useSelector((appStore)=>appStore.search);
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      suggestData();
+      if(searchCache[search]){
+        setShowSuggestions(searchCache[search]);
+      }
+      else{
+        suggestData();
+      }
     }, 200);
 
     return () => {
@@ -23,6 +32,10 @@ const Head = () => {
     const data = await fetch(searchApi + search);
     const jsonData = await data.json();
     setShowSuggestions(jsonData[1]);
+    
+    dispatch(cacheResult({
+      [search]:jsonData[1],
+    }))
   };
 
   const toggleMenuHandler = () => {

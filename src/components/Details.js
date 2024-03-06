@@ -13,6 +13,9 @@ const Details = ({ id }) => {
         try {
             const response = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=AIzaSyAzOh0ICGgTLiT9qj4IAuLxXrbpP1XupdI&id=${id}`);
             const jsonData = await response.json();
+            const newData = await fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=india%2015&key=AIzaSyAzOh0ICGgTLiT9qj4IAuLxXrbpP1XupdI")
+            const jsonData1 = await newData.json();
+            console.log(jsonData1)
             setVideoDetails(jsonData.items[0]);
 
         } catch (error) {
