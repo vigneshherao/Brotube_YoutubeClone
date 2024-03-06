@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Comments from "./Comments";
-import { commentsAPi } from "../utils/contants";
+import { useSearchParams } from "react-router-dom";
 
 const VideoDetail = ({ data }) => {
-
+    const [searchParams] = useSearchParams();
     let [comments,setComments] = useState([]);
+
     useEffect(()=>{
         fetchData();
     },[])
 
-    const id = "jgwHFrON9Q4";
+    let videoId = data.id? searchParams.get("v"):"vBQcU00U9O0";
 
     const fetchData = async () => {
         try {
-            const response = await fetch(commentsAPi);
+            const response = await fetch(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=id%2Csnippet%2Creplies&videoId=${searchParams.get("v")}&maxResults=500&key=AIzaSyDuJQB6iza0Wvbq7Lbtbw1tszcs3K1UiJg`);
             const jsonData = await response.json();
             setComments(jsonData.items);
 
