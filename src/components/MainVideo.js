@@ -19,7 +19,7 @@ const MainVideo = () => {
   return (
     <div className="flex flex-wrap  justify-center">
       {videos.map((video) => (
-        <Link to={"/watch?v="+video.id}>
+        <Link key={video.id} to={"/watch?v="+video.id}>
           <Video key={video.id} data={video} />
         </Link>
       ))}

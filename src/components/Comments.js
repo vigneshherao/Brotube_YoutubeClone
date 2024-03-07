@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Comments = ({data}) => {
-  let {authorDisplayName,textOriginal,authorProfileImageUrl} =data?.topLevelComment?.snippet;
+  let {authorDisplayName,textOriginal,authorProfileImageUrl} = data?.topLevelComment?.snippet;
   return (
     <div className='flex p-2 m-2'>
         <div>
