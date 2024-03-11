@@ -4,6 +4,7 @@ import { toggleMenu } from "../utils/appSlice";
 import { searchApi } from "../utils/contants";
 import appStore from "../utils/appStore";
 import { cacheResult } from "../utils/searchSlice";
+import { Link } from "react-router-dom";
 
 const Head = () => {
   const [search, setSearch] = useState("");
@@ -53,15 +54,17 @@ const Head = () => {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/2048px-Hamburger_icon.svg.png"
           alt="menu"
         ></img>
+        <Link to={"/"}>
         <img
           className="h-5 ml-5 cursor-pointer"
           src="https://upload.wikimedia.org/wikipedia/commons/3/34/YouTube_logo_%282017%29.png"
           alt="youtubelogo"
         ></img>
+        </Link>
       </div>
       <div className="col-span-10 md:col-span-9 flex justify-end items-center md:block">
         <div className="sm:flex md:hidden sm:justify-center sm:items-center">
-          <img className="rounded-full p-2" src="" alt="search" />
+          <i className="fa-solid fa-magnifying-glass"></i>
         </div>
         <div className="hidden md:flex justify-center items-center">
           <div className="">
@@ -75,7 +78,7 @@ const Head = () => {
                 type="text"
               />
               <button className="rounded-r-full p-2 bg-gray-100 px-4 border border-gray-200">
-                🔍
+              <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
             {closeSearch && suggestions.length > 0 && (

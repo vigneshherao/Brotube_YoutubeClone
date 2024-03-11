@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { youtubeApi } from '../utils/contants';
 
 import PanelVideo from './PanelVideo';
+import { Link } from 'react-router-dom';
 
 
 const RIghtSideVideo = () => {
@@ -22,7 +23,7 @@ const RIghtSideVideo = () => {
     <div>
        {
         videos.map((video)=>{
-            return <PanelVideo key={video.id} data={video}/>
+            return <Link to={"/watch?v="+video.id}><PanelVideo key={video.id} data={video}/></Link>
         })
        }
     </div>

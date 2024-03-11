@@ -25,7 +25,7 @@ const ChatContainer = () => {
   }, [dispatch]);
 
   return (
-    <div className='w-full border h-[6%] mb-6 mt-4 p-2 overflow-y-scroll  flex flex-col-reverse'>
+    <div className='w-full border h-[6%] mb-6 mt-4 p-2 overflow-y-scroll flex  flex-col-reverse'>
       <div>
       <form onSubmit={(e)=>e.preventDefault() }>
       <input type='text' value={liveChat} onChange={(e)=> setLiveChat(e.target.value)} placeholder='write something...' className='py-1 border-gray-300 w-[80%] mr-3 px-2' ></input>

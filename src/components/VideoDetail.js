@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Comments from "./Comments";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const VideoDetail = ({ data }) => {
     const [searchParams] = useSearchParams();
     let [comments,setComments] = useState([]);
+    const [subscribe,setSubscribe] = useState(false);
 
+
+    console.log(data);
     useEffect(()=>{
         fetchData();
     },[])
@@ -29,10 +32,14 @@ const VideoDetail = ({ data }) => {
       <h2 className="font-bold text-lg from-neutral-500">
         {data?.snippet?.localized?.title}
       </h2>
-      <div className="flex ">
+      <p></p>
+      <div className="flex justify-between my-2 items-center">
         <div>
-          <button className="bg-black rounded-full p-2 text-white font-semibold">
-            Subscribe
+        <Link to={"/"}> <span className="font-bold">{data?.snippet?.channelTitle}</span></Link>
+        </div>
+        <div>
+          <button className="bg-black rounded-full p-2 text-white font-semibold" onClick={()=>{setSubscribe(!subscribe)}}>
+              {subscribe? "Subscribed" : "Subscribe"}
           </button>
         </div>
       </div>
@@ -47,7 +54,8 @@ const VideoDetail = ({ data }) => {
         </p>
       </div>
       <div>
-        <h3 className="font-bold text-lg mt-2">12,414 Comments </h3>
+        <h3 className="font-bold text-lg mt-2 my-2">{data?.statistics?.commentCount} Comments</h3>
+        <hr></hr>
       </div>
       {
         comments.map((comment)=>{
