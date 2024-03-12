@@ -32,4 +32,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 🔗Live Link - https://lnkd.in/dcv9xYqe
 🔗GitHub Link - https://lnkd.in/d3hmkPu6
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
