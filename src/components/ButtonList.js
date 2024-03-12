@@ -1,17 +1,12 @@
-import React from 'react';
-import Button from './Button';
-
-const namesOfButton = [
-  "All", "Music", "Mixes", "Game Shows", "Live", "Train", "India", "Cooking",
-  "Swiggy", "Circus", "Water", "English", "Bangalore", "Sky", "Fashion", "Dj",
-  "Podcast", "Gym", "Cars"
-];
+import React from "react";
+import Button from "./Button";
+import { namesOfButton } from "../utils/contants";
 
 const ButtonList = () => {
   return (
-    <div className='flex justify-evenly m-2'>
-      {namesOfButton.map((btn, index) => (
-        <Button key={index} name={btn} />
+    <div className="flex justify-evenly m-2">
+      {namesOfButton.map((btn) => (
+        <Button key={btn} name={btn} />
       ))}
     </div>
   );

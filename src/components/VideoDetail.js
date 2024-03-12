@@ -1,30 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Comments from "./Comments";
 import { Link, useSearchParams } from "react-router-dom";
+import useVideoDetails from "../hooks/useVideoDetails";
 
 const VideoDetail = ({ data }) => {
-    const [searchParams] = useSearchParams();
-    let [comments,setComments] = useState([]);
+
+
     const [subscribe,setSubscribe] = useState(false);
 
-
-    useEffect(()=>{
-        fetchData();
-    },[])
-
-    let videoId = data.id? searchParams.get("v"):"vBQcU00U9O0";
-
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`https://youtube.googleapis.com/youtube/v3/commentThreads?part=id%2Csnippet%2Creplies&videoId=${searchParams.get("v")}&maxResults=500&key=AIzaSyBQRyqykU6NycYaiHRgjUIIG5OIRIsg_Pw`);
-            const jsonData = await response.json();
-            setComments(jsonData.items);
-
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
+    const comments = useVideoDetails();
 
   return (
     <div className="pt-1">

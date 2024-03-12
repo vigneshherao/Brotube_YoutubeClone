@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { searchApi } from "../utils/contants";
 import appStore from "../utils/appStore";
+import { youtubeApi } from "../utils/contants";
 import { cacheResult } from "../utils/searchSlice";
 import { Link } from "react-router-dom";
 import { setVideos } from "../utils/videoSlice";
+import { useNavigate } from "react-router-dom";
 
 const Head = () => {
   const [search, setSearch] = useState("");
@@ -45,15 +47,18 @@ const Head = () => {
     dispatch(toggleMenu());
   };
 
+
   const getSearchs = async (name) => {
     try {
-      const data = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=48&q=${name}&key=YOUR_API_KEY`);
+      const data = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=48&q=${name}&key=AIzaSyBQRyqykU6NycYaiHRgjUIIG5OIRIsg_Pw`);
       const newData = await data.json();
       dispatch(setVideos(newData.items));
+
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
+
 
   return (
     <div className="fixed bg-white w-full grid grid-flow-col p-4 border-b border-gray-200 shadow-sm">
@@ -81,7 +86,6 @@ const Head = () => {
               <input
                 onChange={(e) => setSearch(e.target.value)}
                 onFocus={() => setCloseSearch(true)}
-                onBlur={() => setCloseSearch(false)}
                 value={search}
                 className="p-2 w-[50%] rounded-l-full  sm:w-[600px] md:rounded-l-full  md:p-2 px-6 border border-gray-200"
                 type="text"
@@ -96,7 +100,7 @@ const Head = () => {
                   <ul className="">
                     {suggestions.map((suggestion) => (
                       <li
-                        onClick={() => getSearchs(suggestion)}
+                        onClick={() => (getSearchs(suggestion),setCloseSearch(false))}
                         key={suggestion}
                         className="hover:bg-gray-100 py-1 border-b border-gray-50 cursor-pointer flex"
                       >

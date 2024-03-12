@@ -1,28 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { youtubeApi } from "../utils/contants";
+import React, { useEffect } from "react";
 import Video from "./Video";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
-import { useDispatch,useSelector } from "react-redux";
-import { setVideos } from "../utils/videoSlice";
+import useMainVideos from "../hooks/useMainVideos";
 
 const MainVideo = () => {
-  const videos = useSelector((store) => store.video.videos);
 
-  console.log(videos)
-
-  useEffect(() => {
-    fetchVideos();
-  }, []);
-
-  const dispatch = useDispatch();
-
-  const fetchVideos = async () => {
-    const data = await fetch(youtubeApi);
-    const jsonData = await data.json();
-    dispatch(setVideos(jsonData.items));
-    
-  };
+  const videos = useMainVideos();
 
   if(videos.length==0){
     return <Shimmer/>

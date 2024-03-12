@@ -3,21 +3,12 @@ import { youtubeApi } from '../utils/contants';
 
 import PanelVideo from './PanelVideo';
 import { Link } from 'react-router-dom';
+import useRightSide from '../hooks/useRightSide';
 
 
 const RIghtSideVideo = () => {
 
-    let [videos,setVideos] = useState([]);
-
-    useEffect(()=>{
-        fetchVideos();
-    },[])
-
-    const fetchVideos = async () => {
-        const data = await fetch(youtubeApi);
-        const jsonData = await data.json();
-        setVideos(jsonData.items);
-      };
+  const videos = useRightSide();
 
   return (
     <div>

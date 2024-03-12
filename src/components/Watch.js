@@ -12,7 +12,6 @@ const Watch = () => {
   const dispatch = useDispatch();
 
 
-  console.log(searchParams.get("v"));
   useEffect(()=>{
     dispatch(closeMenu());
   },[])

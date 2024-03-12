@@ -2,7 +2,6 @@ import React from "react";
 
 const Video = ({ data }) => {
   let { url } = data?.snippet?.thumbnails?.medium;
-  let { logo } = data?.snippet?.thumbnails?.default;
   let { channelTitle, title } = data?.snippet;
 
   return (

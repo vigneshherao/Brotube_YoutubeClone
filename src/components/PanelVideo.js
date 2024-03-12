@@ -1,6 +1,8 @@
 import React from 'react'
 
 const PanelVideo = ({data}) => {
+
+
   return (
     <div className='flex mt-2'>
         <div className='rounded  w-40'>

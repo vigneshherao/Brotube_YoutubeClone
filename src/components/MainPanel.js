@@ -1,7 +1,6 @@
 import React from 'react'
 import ButtonList from './ButtonList'
 import MainVideo from './MainVideo'
-import Head from './Head'
 import MobileButtons from './MobileButtons'
 
 const MainPanel = () => {
