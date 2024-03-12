@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+🚀 𝐈𝐧𝐭𝐫𝐨𝐝𝐮𝐜𝐢𝐧𝐠 𝐁𝐫𝐨𝐓𝐮𝐛𝐞: 𝐓𝐡𝐞 𝐔𝐥𝐭𝐢𝐦𝐚𝐭𝐞 𝐘𝐨𝐮𝐓𝐮𝐛𝐞 𝐂𝐥𝐨𝐧𝐞!
+
+Developed using 𝐑𝐞𝐚𝐜𝐭𝐉𝐒, 𝐑𝐞𝐝𝐮𝐱, 𝐓𝐚𝐢𝐥𝐰𝐢𝐧𝐝 𝐂𝐒𝐒, 𝐑𝐞𝐚𝐜𝐭 𝐑𝐨𝐮𝐭𝐞𝐫 𝐃𝐎𝐌, 𝐚𝐧𝐝 𝐘𝐨𝐮𝐓𝐮𝐛𝐞 𝐀𝐏𝐈𝐬, BroTube is more than just a clone—it's a dynamic, highly scalable, and 𝐢𝐧𝐝𝐮𝐬𝐭𝐫𝐲-𝐥𝐞𝐯𝐞𝐥 𝐚𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧.
 
 ![image](https://github.com/vigneshherao/Brotube_YoutubeClone/assets/70132638/faca3ee7-6639-4c02-8b96-a4ca216ccd14)
 
@@ -10,69 +12,24 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+This project is built on live Youtube and Google API and includes some advanced features such as:
 
-In the project directory, you can run:
+🎯 Dynamic Real-time Content: Leveraged the YouTube API to ensure users are immersed in the latest video content, keeping the experience always fresh.
 
-### `npm start`
+🎯 Optimized Performance with Memoization: Implemented advanced memoization techniques, reducing unnecessary API calls and boosting application responsiveness.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🎯 Efficient Advanced Search: Developed an advanced search feature with autocomplete, debouncing, memoization, and caching, ensuring a swift and efficient search experience.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🎯 Engaging Video Interaction: Enhanced user engagement with comments and live chat functionality within the immersive video playback experience.
 
-### `npm test`
+🎯 Effective Error Handling: Mastered the art of handling diverse error situations, including YouTube API daily limit crosses, ensuring a seamless user experience even in unexpected scenarios.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+✨ Shimmer UI: BroTube utilizes the shimmer effect in the user interface to provide visual feedback and enhance the loading experience.
 
 ### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
-
+🔗Live Link - https://lnkd.in/dcv9xYqe
+🔗GitHub Link - https://lnkd.in/d3hmkPu6
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
