@@ -1,5 +1,13 @@
 # Getting Started with Create React App
 
+![image](https://github.com/vigneshherao/Brotube_YoutubeClone/assets/70132638/faca3ee7-6639-4c02-8b96-a4ca216ccd14)
+
+![image](https://github.com/vigneshherao/Brotube_YoutubeClone/assets/70132638/99bf1651-9e86-4f86-b23a-c76340a2f35a)
+
+
+![image](https://github.com/vigneshherao/Brotube_YoutubeClone/assets/70132638/28c7f02e-f90f-4577-ab19-5c5a5c84e721)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
