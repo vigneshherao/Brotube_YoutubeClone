@@ -5,6 +5,7 @@ import { searchApi } from "../utils/contants";
 import appStore from "../utils/appStore";
 import { cacheResult } from "../utils/searchSlice";
 import { Link } from "react-router-dom";
+import { setVideos } from "../utils/videoSlice";
 
 const Head = () => {
   const [search, setSearch] = useState("");
@@ -12,14 +13,13 @@ const Head = () => {
   const [closeSearch, setCloseSearch] = useState(false);
   const dispatch = useDispatch();
 
-  const searchCache = useSelector((appStore)=>appStore.search);
+  const searchCache = useSelector((appStore) => appStore.search);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if(searchCache[search]){
+      if (searchCache[search]) {
         setShowSuggestions(searchCache[search]);
-      }
-      else{
+      } else {
         suggestData();
       }
     }, 200);
@@ -33,14 +33,26 @@ const Head = () => {
     const data = await fetch(searchApi + search);
     const jsonData = await data.json();
     setShowSuggestions(jsonData[1]);
-    
-    dispatch(cacheResult({
-      [search]:jsonData[1],
-    }))
+
+    dispatch(
+      cacheResult({
+        [search]: jsonData[1],
+      })
+    );
   };
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
+  };
+
+  const getSearchs = async (name) => {
+    try {
+      const data = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=48&q=${name}&key=YOUR_API_KEY`);
+      const newData = await data.json();
+      dispatch(setVideos(newData.items));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   return (
@@ -55,18 +67,15 @@ const Head = () => {
           alt="menu"
         ></img>
         <Link to={"/"}>
-        <img
-          className="h-5 ml-5 cursor-pointer"
-          src="https://upload.wikimedia.org/wikipedia/commons/3/34/YouTube_logo_%282017%29.png"
-          alt="youtubelogo"
-        ></img>
+          <img
+            className="h-5 ml-5 cursor-pointer"
+            src="https://upload.wikimedia.org/wikipedia/commons/3/34/YouTube_logo_%282017%29.png"
+            alt="youtubelogo"
+          ></img>
         </Link>
       </div>
       <div className="col-span-10 md:col-span-9 flex justify-end items-center md:block">
-        <div className="sm:flex md:hidden sm:justify-center sm:items-center">
-          <i className="fa-solid fa-magnifying-glass"></i>
-        </div>
-        <div className="hidden md:flex justify-center items-center">
+        <div className="md:flex justify-center items-center">
           <div className="">
             <div className="flex justify-center items-center relative">
               <input
@@ -74,11 +83,11 @@ const Head = () => {
                 onFocus={() => setCloseSearch(true)}
                 onBlur={() => setCloseSearch(false)}
                 value={search}
-                className="w-[600px] rounded-l-full p-2 px-6 border border-gray-200"
+                className="p-2 w-[50%] rounded-l-full  sm:w-[600px] md:rounded-l-full  md:p-2 px-6 border border-gray-200"
                 type="text"
               />
               <button className="rounded-r-full p-2 bg-gray-100 px-4 border border-gray-200">
-              <i className="fa-solid fa-magnifying-glass"></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
             {closeSearch && suggestions.length > 0 && (
@@ -87,6 +96,7 @@ const Head = () => {
                   <ul className="">
                     {suggestions.map((suggestion) => (
                       <li
+                        onClick={() => getSearchs(suggestion)}
                         key={suggestion}
                         className="hover:bg-gray-100 py-1 border-b border-gray-50 cursor-pointer flex"
                       >
@@ -100,7 +110,7 @@ const Head = () => {
           </div>
         </div>
       </div>
-      <div className="col-span-1 md:col-span-2 flex items-center justify-end">
+      <div className="hidden sm:col-span-2 md:flex items-center justify-end">
         <button className="border border-gray-200 rounded-full p-2 text-sm text-blue-600 flex justify-center items-center">
           <img
             className="h-7 m-auto cursor-pointer"

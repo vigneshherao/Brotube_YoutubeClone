@@ -23,7 +23,7 @@ const RIghtSideVideo = () => {
     <div>
        {
         videos.map((video)=>{
-            return <Link to={"/watch?v="+video.id}><PanelVideo key={video.id} data={video}/></Link>
+            return <Link key={video.id} to={"/watch?v="+video.id}><PanelVideo key={video.id} data={video}/></Link>
         })
        }
     </div>

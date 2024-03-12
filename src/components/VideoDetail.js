@@ -8,7 +8,6 @@ const VideoDetail = ({ data }) => {
     const [subscribe,setSubscribe] = useState(false);
 
 
-    console.log(data);
     useEffect(()=>{
         fetchData();
     },[])

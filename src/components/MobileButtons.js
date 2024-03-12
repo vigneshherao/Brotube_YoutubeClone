@@ -1,0 +1,29 @@
+import React from 'react'
+import Button from './Button';
+import { useDispatch } from 'react-redux';
+import { setVideos } from '../utils/videoSlice';
+
+const namesOfButton = [ "Music", "Mixes", "Game Shows", "Live", "Train", "India", "Cooking"];
+
+const MobileButtons = () => {
+
+    const dispatch = useDispatch();
+
+   const getSearch = async (name)=>{
+        const data =await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=48&q=${name}&key=AIzaSyBQRyqykU6NycYaiHRgjUIIG5OIRIsg_Pw`)
+        const newData = await data.json();
+        dispatch(setVideos(newData.items));
+    }
+
+  return (
+    <div className='sm:hidden flex justify-evenly m-2'>
+     {namesOfButton.map((btn, index) => (
+      <div className="sm:block sm:bg-gray-200 sm:px-2 rounded-md hover:bg-slate-400">
+      <button onClick={()=>{getSearch(btn)}} className='block bg-gray-200 sm:px-2 rounded-md hover:bg-slate-400"'>{btn}</button>
+      </div>
+    ))}
+  </div>
+  )
+}
+
+export default MobileButtons
