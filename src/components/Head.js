@@ -50,7 +50,7 @@ const Head = () => {
 
   const getSearchs = async (name) => {
     try {
-      const data = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=48&q=${name}&key=AIzaSyBQRyqykU6NycYaiHRgjUIIG5OIRIsg_Pw`);
+      const data = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=48&q=${name}&key=AIzaSyD7WMIin5c8tH9ssVi9Q8Eqi6hxKXA-cLg`);
       const newData = await data.json();
       dispatch(setVideos(newData.items));
 
@@ -91,7 +91,7 @@ const Head = () => {
                 type="text"
               />
               <button className="rounded-r-full p-2 bg-gray-100 px-4 border border-gray-200">
-                <i className="fa-solid fa-magnifying-glass"></i>
+                <i onClick={()=>getSearchs(suggestions)} className="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
             {closeSearch && suggestions.length > 0 && (

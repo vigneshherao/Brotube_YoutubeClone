@@ -9,7 +9,7 @@ const MobileButtons = () => {
   const dispatch = useDispatch();
 
    const getSearch = async (name)=>{
-        const data =await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=48&q=${name}&key=AIzaSyBQRyqykU6NycYaiHRgjUIIG5OIRIsg_Pw`)
+        const data =await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=48&q=${name}&key=AIzaSyD7WMIin5c8tH9ssVi9Q8Eqi6hxKXA-cLg`)
         const newData = await data.json();
         dispatch(setVideos(newData.items));
     }
